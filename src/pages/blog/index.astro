@@ -12,12 +12,20 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="no">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			main {
 				width: 960px;
+				padding-top: 2em;
+			}
+			.eyebrow {
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 0.8em;
+				color: rgb(var(--gray));
+				margin: 0 0 0.35em 0;
 			}
 			ul {
 				display: flex;
@@ -68,6 +76,16 @@ const posts = (await getCollection('blog')).sort(
 			ul a:hover img {
 				box-shadow: var(--box-shadow);
 			}
+			.blog-hero {
+				margin-bottom: 1.5em;
+			}
+			.blog-hero h1 {
+				margin: 0 0 0.2em 0;
+			}
+			.blog-hero .lede {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
 			@media (max-width: 720px) {
 				ul {
 					gap: 0.5em;
@@ -88,6 +106,13 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
+			<section class="blog-hero">
+				<p class="eyebrow">Blogg</p>
+				<h1>Notater & eksperimenter</h1>
+				<p class="lede">
+					Korte innlegg om ting jeg prøver ut – alt fra plattformvalg og observability til frontenddetaljer.
+				</p>
+			</section>
 			<section>
 				<ul>
 					{
