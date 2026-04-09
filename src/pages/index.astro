@@ -6,45 +6,149 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="no">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				padding: 4em 0 2em;
+				text-align: center;
+			}
+			.hero h1 {
+				font-size: 3rem;
+				margin-bottom: 0.25em;
+			}
+			.hero .tagline {
+				font-size: 1.25rem;
+				color: rgb(var(--gray));
+				margin-bottom: 1.5em;
+			}
+			.hero-links {
+				display: flex;
+				gap: 1em;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.btn {
+				display: inline-block;
+				padding: 0.6em 1.4em;
+				border-radius: 6px;
+				text-decoration: none;
+				font-weight: 700;
+				transition: 0.2s ease;
+			}
+			.btn-primary {
+				background: var(--accent);
+				color: #fff;
+			}
+			.btn-primary:hover {
+				background: var(--accent-dark);
+				color: #fff;
+			}
+			.btn-secondary {
+				border: 2px solid var(--accent);
+				color: var(--accent);
+			}
+			.btn-secondary:hover {
+				background: var(--accent);
+				color: #fff;
+			}
+			.section {
+				padding: 2em 0;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.section h2 {
+				font-size: 1.75rem;
+				margin-bottom: 0.75em;
+			}
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+				gap: 1em;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.skill-tag {
+				background: rgb(var(--gray-light));
+				border-radius: 6px;
+				padding: 0.5em 1em;
+				text-align: center;
+				font-size: 0.95rem;
+			}
+			.contact-links {
+				display: flex;
+				gap: 1em;
+				flex-wrap: wrap;
+				align-items: center;
+				margin-top: 0.5em;
+			}
+			.contact-links a {
+				display: flex;
+				align-items: center;
+				gap: 0.4em;
+				text-decoration: none;
+				color: var(--accent);
+			}
+			.contact-links a:hover {
+				text-decoration: underline;
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<h1>Hei, jeg er Mats Kjoshagen 👋</h1>
+				<p class="tagline">IT-utvikler med lidenskap for teknologi, kode og gode løsninger.</p>
+				<div class="hero-links">
+					<a href="/cv" class="btn btn-primary">Se min CV</a>
+					<a href="/about" class="btn btn-secondary">Om meg</a>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2>Hva jeg jobber med</h2>
+				<p>
+					Jeg er en IT-utvikler med interesse for fullstack-utvikling, skyteknologi og
+					automatisering. Jeg liker å bygge robuste og brukervennlige løsninger, og er alltid
+					nysgjerrig på ny teknologi.
+				</p>
+				<ul class="skills-grid">
+					<li class="skill-tag">TypeScript / JavaScript</li>
+					<li class="skill-tag">Python</li>
+					<li class="skill-tag">React</li>
+					<li class="skill-tag">Node.js</li>
+					<li class="skill-tag">SQL / PostgreSQL</li>
+					<li class="skill-tag">Docker</li>
+					<li class="skill-tag">Linux</li>
+					<li class="skill-tag">Git</li>
+					<li class="skill-tag">Cloudflare</li>
+					<li class="skill-tag">Azure / AWS</li>
+				</ul>
+			</section>
+
+			<section class="section">
+				<h2>Ta kontakt</h2>
+				<p>
+					Er du interessert i å ta kontakt, eller ønsker du å se mer? Du finner meg her:
+				</p>
+				<div class="contact-links">
+					<a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer">
+						<svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
+							<path
+								fill="currentColor"
+								d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+							></path>
+						</svg>
+						github.com/matskkolstad
+					</a>
+					<a href="/cv">📄 Min CV</a>
+					<a href="/blog">✍️ Blogg</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
