@@ -2,7 +2,75 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { CONTACT_EMAIL, CV_LINK, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const highlights = [
+	{
+		title: 'Sky-først',
+		description: 'Leverer produkter på plattformer som Cloudflare Workers og Vercel med korte ledetider.',
+	},
+	{
+		title: 'Produkt & leveranse',
+		description:
+			'Bryter ned krav, prioriterer hypoteser og sikrer at teknisk kvalitet og forretningsverdi henger sammen.',
+	},
+	{
+		title: 'Tverrfaglig samarbeid',
+		description: 'Trives i team med design, data og drift. Tar ansvar fra idé til produksjon og videre læring.',
+	},
+];
+
+const experiences = [
+	{
+		role: 'Senior utvikler / tech lead',
+		company: 'Rådgiver/oppdragsgiver',
+		period: '2022–nå',
+		summary:
+			'Driver produktinitiativer, etablerer plattformpraksis og sikrer kvalitet gjennom kode, målinger og prosess.',
+		points: ['Eier arkitekturvalg og sikrer forenkling.', 'Fasiliterer teamritualer og retning.'],
+	},
+	{
+		role: 'Fullstack utvikler',
+		company: 'Produktteam',
+		period: '2019–2022',
+		summary:
+			'Bygget og driftet brukerrettede tjenester med fokus på ytelse, tilgjengelighet og automatisert testing.',
+		points: [
+			'Implementerte ende-til-ende observability og release-strategi.',
+			'Jobbet tett med designere for å levere polerte flater.',
+		],
+	},
+	{
+		role: 'Konsulent',
+		company: 'Kundeteam',
+		period: '2016–2019',
+		summary:
+			'Leverte integrationsprosjekter, etablerte CI/CD og kvalitetssikring for web- og API-løsninger.',
+		points: ['Automatiserte bygg- og deployløp.', 'Kartla teknisk gjeld og planla tiltak.'],
+	},
+];
+
+const projects = [
+	{
+		title: 'Leveringsplattform i skyen',
+		blurb:
+			'Skalerbar kjede for hendelser og API-er levert på serverless. Reduserte responstid og driftstid.',
+		tags: ['Cloudflare Workers', 'Node/TypeScript', 'Observability'],
+		status: 'Lenke/artefakter kan legges til her',
+	},
+	{
+		title: 'Designsystem og komponentbibliotek',
+		blurb: 'Felles UX-rammeverk og kodekomponenter for flere produktteam med tematikk og dokumentasjon.',
+		tags: ['Astro/React', 'Storybook', 'Design tokens'],
+		status: 'Legg til lenke til repo eller demo',
+	},
+	{
+		title: 'Datadrevet innsikt',
+		blurb: 'Rapporter og dashboards for produkthelse med forretningsmål, eksperimentering og A/B-testing.',
+		tags: ['Analytics', 'Experimentation', 'Product ops'],
+		status: 'Plassholder for case study eller PDF',
+	},
+];
 ---
 
 <!doctype html>
@@ -13,38 +81,482 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero" id="profile">
+				<div class="hero__content">
+					<div class="pill">Åpen for nye muligheter · Konsulent eller fast</div>
+					<h1>
+						Hei, jeg er {SITE_TITLE}. Jeg bygger digitale opplevelser som er robuste, raske og
+						behagelige å bruke.
+					</h1>
+					<p class="lead">
+						Kombinerer utvikling og produktledelse for å levere løsninger som gir målbar effekt.
+						Jeg liker spesielt godt skyplattformer, gode utviklerverktøy og teams som itererer raskt.
+					</p>
+					<div class="hero__actions">
+						<a class="primary" href={`mailto:${CONTACT_EMAIL}`}>Send en e-post</a>
+						<a class="ghost" href={CV_LINK}>Last ned CV (plassholder)</a>
+						<a class="text" href="/blog">Se blogg/notater</a>
+					</div>
+					<div class="hero__meta">
+						<div class="meta-card card">
+							<p class="eyebrow">Kjerneområder</p>
+							<div class="bubbles">
+								<span>Systemdesign</span>
+								<span>Observability</span>
+								<span>Designsystemer</span>
+								<span>API-er</span>
+								<span>Produktstrategi</span>
+							</div>
+						</div>
+						<div class="meta-card card">
+							<p class="eyebrow">Verktøy & språk</p>
+							<div class="tags">
+								<span>TypeScript</span>
+								<span>Astro</span>
+								<span>Node.js</span>
+								<span>Cloudflare</span>
+								<span>Docker</span>
+								<span>CI/CD</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="hero__panel card">
+					<div class="signal">
+						<span class="pulse"></span>
+						<span>Tilgjengelig for samarbeid</span>
+					</div>
+					<div class="stat">
+						<div class="number">7+</div>
+						<p>års erfaring med produktutvikling i tverrfaglige team.</p>
+					</div>
+					<div class="stat">
+						<div class="number">Cloud-native</div>
+						<p>leveranser på serverless, med målinger fra dag én.</p>
+					</div>
+					<div class="stat">
+						<div class="number">Teamfokus</div>
+						<p>setter retning, rydder hindringer og fasiliterer gode prosesser.</p>
+					</div>
+					<div class="cta-card">
+						<p>Vil du se mer? Legg til case studies, referanser eller demoer her.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="highlighted">
+				{highlights.map((item) => (
+					<article class="tile card">
+						<p class="eyebrow">{item.title}</p>
+						<p>{item.description}</p>
+					</article>
+				))}
+			</section>
+
+			<section class="experience card" id="experience">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Erfaring</p>
+						<h2>Fra idé til produksjon</h2>
+						<p class="lead">
+							Oppsummering av roller og ansvar. Oppdater med konkrete selskaper, resultater og
+							lenker.
+						</p>
+					</div>
+					<div class="eyebrow badge">Legg inn detaljer fra CV-en</div>
+				</div>
+				<div class="timeline">
+					{experiences.map((exp) => (
+						<div class="item">
+							<div class="dot"></div>
+							<div class="content">
+								<div class="row">
+									<h3>{exp.role}</h3>
+									<span class="period">{exp.period}</span>
+								</div>
+								<p class="company">{exp.company}</p>
+								<p>{exp.summary}</p>
+								<ul>
+									{exp.points.map((point) => (
+										<li>{point}</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section class="projects" id="projects">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Prosjekter</p>
+						<h2>Utvalgte initiativer</h2>
+						<p class="lead">Legg til lenker, demoer eller repoer når de er klare.</p>
+					</div>
+					<a class="ghost" href={CV_LINK}>Full CV</a>
+				</div>
+				<div class="project-grid">
+					{projects.map((project) => (
+						<article class="project card">
+							<div class="badge muted">Placeholder</div>
+							<h3>{project.title}</h3>
+							<p>{project.blurb}</p>
+							<div class="tags">
+								{project.tags.map((tag) => (
+									<span>{tag}</span>
+								))}
+							</div>
+							<p class="status">{project.status}</p>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="cta card" id="contact">
+				<div>
+					<p class="eyebrow">Neste steg</p>
+					<h2>Skal vi ta en prat?</h2>
+					<p class="lead">
+						Fortell kort om behovet, så skisserer jeg et forslag til hvordan vi kan komme i gang.
+						Alternativt kan du laste opp CV og konkrete case-studier her for rask deling.
+					</p>
+					<div class="hero__actions">
+						<a class="primary" href={`mailto:${CONTACT_EMAIL}`}>Kontakt på e-post</a>
+						<a class="ghost" href={CV_LINK}>Se CV (oppdater lenke)</a>
+					</div>
+				</div>
+				<div class="cta-side">
+					<div class="note card">
+						<p class="eyebrow">Små og store oppdrag</p>
+						<p>
+							Rask bistand (workshops, code review, plattformvurdering) eller lengre engasjement.
+						</p>
+					</div>
+					<div class="note card">
+						<p class="eyebrow">Anbefalt</p>
+						<p>Legg inn kalenderlenke eller telefonnummer her for kjapp booking.</p>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero {
+		display: grid;
+		grid-template-columns: 3fr 2fr;
+		gap: 1.5rem;
+		margin-bottom: 2.5rem;
+		position: relative;
+	}
+	.hero::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		top: -10%;
+		width: 280px;
+		height: 280px;
+		background: radial-gradient(circle, rgba(14, 165, 233, 0.18), transparent 60%);
+		filter: blur(10px);
+		z-index: -1;
+		animation: float 12s ease-in-out infinite alternate;
+	}
+	.hero__content h1 {
+		font-size: clamp(2.2rem, 4vw, 3rem);
+		margin: 0.3rem 0 0.9rem;
+	}
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 0.6rem 0 1.4rem;
+	}
+	.hero__actions a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.75rem 1.1rem;
+		border-radius: 12px;
+		font-weight: 700;
+		text-decoration: none;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+	}
+	.hero__actions .primary {
+		background: linear-gradient(120deg, #0ea5e9, #22c55e);
+		color: #041019;
+		border: none;
+		box-shadow: 0 12px 35px rgba(14, 165, 233, 0.3);
+	}
+	.hero__actions .ghost {
+		color: var(--text);
+		background: rgba(255, 255, 255, 0.05);
+	}
+	.hero__actions .text {
+		color: var(--muted);
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.hero__meta {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+	.meta-card {
+		padding: 1rem;
+		border-radius: var(--radius);
+		border: var(--border);
+	}
+	.bubbles,
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.bubbles span,
+	.tags span {
+		padding: 0.45rem 0.7rem;
+		border-radius: 12px;
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--text);
+		font-weight: 600;
+	}
+	.hero__panel {
+		padding: 1.5rem;
+		border-radius: 18px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+		display: grid;
+		gap: 1.1rem;
+	}
+	.signal {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.75rem;
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		background: rgba(255, 255, 255, 0.04);
+		width: fit-content;
+	}
+	.signal .pulse {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: radial-gradient(circle, #22c55e 0%, #0ea5e9 80%);
+		animation: pulse 5s ease-in-out infinite;
+	}
+	.stat {
+		background: rgba(255, 255, 255, 0.03);
+		padding: 0.9rem 1rem;
+		border-radius: 14px;
+		border: 1px solid rgba(255, 255, 255, 0.06);
+	}
+	.stat .number {
+		font-size: 1.4rem;
+		color: #f8fbff;
+		font-weight: 700;
+	}
+	.cta-card {
+		padding: 0.9rem 1rem;
+		border-radius: 12px;
+		border: 1px dashed rgba(255, 255, 255, 0.22);
+		color: var(--accent-contrast);
+		background: rgba(14, 165, 233, 0.06);
+		font-weight: 600;
+	}
+	.highlighted {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1rem;
+		margin: 0 0 2rem;
+	}
+	.tile {
+		padding: 1.1rem;
+		border-radius: 14px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+	}
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.78rem;
+		color: var(--muted);
+		margin: 0 0 0.4rem;
+	}
+	.experience {
+		padding: 1.5rem;
+		border-radius: 18px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		margin-bottom: 2rem;
+	}
+	.section-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+	.section-head h2 {
+		margin: 0;
+	}
+	.badge {
+		padding: 0.4rem 0.8rem;
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.08);
+		color: var(--text);
+		font-weight: 700;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+	}
+	.timeline {
+		display: grid;
+		gap: 1.5rem;
+	}
+	.item {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.75rem 1rem;
+		align-items: start;
+	}
+	.item .dot {
+		width: 12px;
+		height: 12px;
+		margin-top: 0.35rem;
+		border-radius: 50%;
+		background: linear-gradient(120deg, #0ea5e9, #22c55e);
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.05);
+	}
+	.item .content {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		padding-bottom: 1rem;
+	}
+	.item:last-child .content {
+		border-bottom: none;
+	}
+	.row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.row h3 {
+		margin: 0;
+	}
+	.period {
+		color: var(--muted);
+		font-weight: 700;
+	}
+	.company {
+		color: var(--accent-contrast);
+		font-weight: 700;
+		margin: 0 0 0.4rem;
+	}
+	.item ul {
+		margin: 0;
+		padding-left: 1.2rem;
+		color: var(--muted);
+		display: grid;
+		gap: 0.35rem;
+	}
+	.projects {
+		margin-bottom: 2rem;
+	}
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1rem;
+	}
+	.project {
+		padding: 1.25rem;
+		border-radius: 16px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+	}
+	.project h3 {
+		margin: 0 0 0.5rem;
+	}
+	.project .tags {
+		margin: 0.6rem 0 0.4rem;
+	}
+	.project .tags span {
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		padding: 0.4rem 0.65rem;
+		border-radius: 12px;
+		display: inline-flex;
+		margin-right: 0.4rem;
+		margin-bottom: 0.35rem;
+		font-weight: 600;
+	}
+	.badge.muted {
+		background: rgba(255, 255, 255, 0.05);
+		color: var(--muted);
+	}
+	.status {
+		color: var(--accent-contrast);
+		font-weight: 600;
+		margin-top: 0.5rem;
+	}
+	.cta {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 1rem;
+		padding: 1.6rem;
+		border-radius: 18px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	.cta-side {
+		display: grid;
+		gap: 0.8rem;
+	}
+	.note {
+		padding: 0.9rem;
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		background: rgba(255, 255, 255, 0.03);
+	}
+	@keyframes float {
+		0% {
+			transform: translateY(0px) rotate(0deg);
+		}
+		100% {
+			transform: translateY(-12px) rotate(1deg);
+		}
+	}
+	@keyframes pulse {
+		0%,
+		100% {
+			box-shadow: 0 0 0 10px rgba(14, 165, 233, 0.12);
+		}
+		50% {
+			box-shadow: 0 0 0 16px rgba(14, 165, 233, 0.05);
+		}
+	}
+	@media (max-width: 1024px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+		.hero__panel {
+			order: -1;
+		}
+		.section-head {
+			flex-direction: column;
+		}
+		.cta {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 720px) {
+		.hero__meta {
+			grid-template-columns: 1fr;
+		}
+		.hero__actions {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,5 +1,6 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = "Astro Blog";
-export const SITE_DESCRIPTION = "Welcome to my website!";
+// Global site metadata and handy placeholders
+export const SITE_TITLE = "Mats Kjoshagen Kolstad";
+export const SITE_DESCRIPTION =
+	"Bygger solide, brukervennlige løsninger i skjæringspunktet mellom backend, frontend og sky.";
+export const CONTACT_EMAIL = "hello@matskjoshagen.no"; // Oppdater til ønsket kontaktadresse
+export const CV_LINK = "/Mats-Kjoshagen-Kolstad-CV.pdf"; // Legg til CV på denne stien for nedlasting

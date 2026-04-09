@@ -1,4 +1,8 @@
-# Astro Starter Kit: Blog
+# Personlig nettside for Mats Kjoshagen Kolstad
+
+Bygger en moderne, responsiv side for å presentere erfaring, kvalifikasjoner og kontaktinformasjon til
+Mats Kjoshagen Kolstad. Siden er basert på Astro og er tilpasset for Cloudflare Workers, med plassholdere
+for CV, prosjekter og case-studier.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
 
