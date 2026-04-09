@@ -4,61 +4,146 @@ import PageLayout from '../layouts/PageLayout.astro';
 
 <PageLayout title="Om meg – Mats Kjoshagen" description="Lær mer om Mats Kjoshagen – IT-utvikler, interesser og bakgrunn.">
 	<style>
-		h1 {
+		.page-header {
+			padding-bottom: 2em;
+			border-bottom: 1px solid rgb(var(--gray-light));
+			margin-bottom: 2.5em;
+		}
+		.page-header h1 {
 			margin-bottom: 0.25em;
 		}
-		.subtitle {
+		.page-header .subtitle {
+			font-size: 1.05rem;
 			color: rgb(var(--gray));
-			font-size: 1.1rem;
-			margin-bottom: 2em;
+			margin: 0;
 		}
-		.section {
-			margin-top: 2em;
-			padding-top: 1.5em;
-			border-top: 1px solid rgb(var(--gray-light));
+		.about-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.5em;
 		}
-		.section h2 {
-			font-size: 1.5rem;
-			margin-bottom: 0.5em;
+		.about-section {
+			background: rgb(var(--white));
+			border: 1px solid rgb(var(--gray-light));
+			border-radius: var(--radius);
+			padding: 1.75em;
+			box-shadow: var(--box-shadow);
+		}
+		.about-section h2 {
+			font-size: 1.25rem;
+			margin-bottom: 0.75em;
+			display: flex;
+			align-items: center;
+			gap: 0.4em;
+		}
+		.about-section p:last-child {
+			margin-bottom: 0;
+		}
+		.contact-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.6em;
+		}
+		.contact-list li {
+			display: flex;
+			align-items: center;
+			gap: 0.6em;
+			font-size: 0.95rem;
+		}
+		.contact-list a {
+			color: var(--accent);
+			text-decoration: none;
+			font-weight: 600;
+		}
+		.contact-list a:hover {
+			text-decoration: underline;
+		}
+		.value-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.6em;
+		}
+		.value-list li {
+			display: flex;
+			align-items: flex-start;
+			gap: 0.6em;
+		}
+		.value-list li::before {
+			content: '✓';
+			color: var(--accent);
+			font-weight: 700;
+			flex-shrink: 0;
+			margin-top: 0.15em;
 		}
 	</style>
 
-	<h1>Om meg</h1>
-	<p class="subtitle">IT-utvikler | Teknologientusiast | Problemløser</p>
+	<div class="page-header">
+		<h1>Om meg</h1>
+		<p class="subtitle">IT-utvikler · Teknologientusiast · Problemløser</p>
+	</div>
 
-	<p>
-		Hei! Jeg heter Mats Kjoshagen og er en IT-utvikler med lidenskap for å bygge digitale løsninger
-		som gjør en forskjell. Jeg trives best når jeg får jobbe med spennende tekniske utfordringer og
-		lære noe nytt underveis.
-	</p>
+	<div class="about-grid">
+		<div class="about-section">
+			<h2>👋 Hvem er jeg?</h2>
+			<p>
+				Hei! Jeg heter Mats Kjoshagen og er en IT-utvikler med lidenskap for å bygge digitale
+				løsninger som gjør en reell forskjell. Jeg trives best når jeg får jobbe med spennende
+				tekniske utfordringer og lære noe nytt underveis.
+			</p>
+			<p>
+				Jeg har bred erfaring innen softwareutvikling, fra frontend til backend og
+				skyinfrastruktur. Jeg er opptatt av kodekvalitet, gode utviklingspraksiser og å levere
+				løsninger som faktisk fungerer i produksjon – ikke bare på papiret.
+			</p>
+		</div>
 
-	<p>
-		Jeg har bred erfaring innen softwareutvikling, fra frontend til backend og skyinfrastruktur.
-		Jeg er opptatt av kodekvalitet, gode utviklingspraksiser og å levere løsninger som faktisk
-		fungerer i produksjon.
-	</p>
+		<div class="about-section">
+			<h2>💡 Hva driver meg?</h2>
+			<ul class="value-list">
+				<li>Å løse komplekse problemer med elegante, enkle løsninger</li>
+				<li>Kontinuerlig læring og utforskning av ny teknologi</li>
+				<li>Å skrive kode som er lesbar, testbar og vedlikeholdbar</li>
+				<li>Samarbeid i team der alle bidrar og vokser faglig</li>
+				<li>Å bygge produkter som brukere faktisk setter pris på</li>
+			</ul>
+		</div>
 
-	<section class="section">
-		<h2>Interesser</h2>
-		<p>
-			På fritiden liker jeg å utforske ny teknologi, bidra til open source-prosjekter og holde meg
-			oppdatert på utviklertrender. Jeg er også glad i friluftsliv og tilbringer gjerne tid ute i
-			naturen for å lade opp.
-		</p>
-	</section>
+		<div class="about-section">
+			<h2>🌲 På fritiden</h2>
+			<p>
+				Når jeg ikke koder liker jeg å være ute i naturen – enten det er turer i fjellet,
+				skirenn eller bare en gå-tur i skogen for å lade opp. Jeg er også glad i å følge med
+				på hva som skjer i tech-verdenen og bidra til open source-prosjekter der jeg kan.
+			</p>
+		</div>
 
-	<section class="section">
-		<h2>Hva jeg ser etter</h2>
-		<p>
-			Jeg ser etter muligheter der jeg kan bidra med mine tekniske ferdigheter i et team som
-			verdsetter faglig utvikling, god kodekultur og reell påvirkningskraft på produktet. Om du
-			tror jeg kan passe inn hos deg, ta gjerne kontakt!
-		</p>
-		<p>
-			📧 <a href="mailto:mats@kjoshagen.online">mats@kjoshagen.online</a><br />
-			💼 <a href="/cv">Se min CV</a><br />
-			🐙 <a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer">github.com/matskkolstad</a>
-		</p>
-	</section>
+		<div class="about-section">
+			<h2>🔍 Hva jeg ser etter</h2>
+			<p>
+				Jeg ser etter muligheter der jeg kan bidra med mine tekniske ferdigheter i et team som
+				verdsetter faglig utvikling, god kodekultur og reell påvirkningskraft på produktet.
+				Både faste stillinger og prosjektbasert arbeid er interessant.
+			</p>
+			<p>
+				<a href="/cv" class="btn btn-primary" style="margin-top:0.5em">📄 Se min CV</a>
+			</p>
+		</div>
+
+		<div class="about-section">
+			<h2>📬 Ta kontakt</h2>
+			<ul class="contact-list">
+				<li>📧 <a href="mailto:mats@kjoshagen.online">mats@kjoshagen.online</a></li>
+				<li>🐙 <a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer">github.com/matskkolstad</a></li>
+				<li>🌐 <a href="https://kjoshagen.online">kjoshagen.online</a></li>
+			</ul>
+		</div>
+	</div>
 </PageLayout>
+
 

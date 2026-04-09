@@ -10,88 +10,170 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
+			/* Hero */
 			.hero {
-				padding: 4em 0 2em;
+				padding: 5em 0 3.5em;
 				text-align: center;
+				position: relative;
+			}
+			.hero::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29, 78, 216, 0.07) 0%, transparent 70%);
+				pointer-events: none;
+			}
+			.hero-badge {
+				display: inline-block;
+				background: var(--accent-light);
+				color: var(--accent);
+				border: 1px solid rgba(29,78,216,0.2);
+				border-radius: 100px;
+				font-size: 0.85rem;
+				font-weight: 700;
+				padding: 0.3em 1em;
+				margin-bottom: 1.25em;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
 			}
 			.hero h1 {
-				font-size: 3rem;
-				margin-bottom: 0.25em;
+				font-size: clamp(2.25rem, 6vw, 3.5rem);
+				line-height: 1.1;
+				margin-bottom: 0.5em;
+				background: linear-gradient(135deg, rgb(var(--black)) 40%, var(--accent));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
 			}
-			.hero .tagline {
-				font-size: 1.25rem;
+			.hero-tagline {
+				font-size: 1.15rem;
 				color: rgb(var(--gray));
-				margin-bottom: 1.5em;
+				max-width: 520px;
+				margin: 0 auto 2em;
+				line-height: 1.6;
 			}
-			.hero-links {
+			.hero-actions {
 				display: flex;
 				gap: 1em;
 				justify-content: center;
 				flex-wrap: wrap;
 			}
-			.btn {
-				display: inline-block;
-				padding: 0.6em 1.4em;
-				border-radius: 6px;
-				text-decoration: none;
-				font-weight: 700;
-				transition: 0.2s ease;
-			}
-			.btn-primary {
-				background: var(--accent);
-				color: #fff;
-			}
-			.btn-primary:hover {
-				background: var(--accent-dark);
-				color: #fff;
-			}
-			.btn-secondary {
-				border: 2px solid var(--accent);
-				color: var(--accent);
-			}
-			.btn-secondary:hover {
-				background: var(--accent);
-				color: #fff;
-			}
-			.section {
-				padding: 2em 0;
-				border-top: 1px solid rgb(var(--gray-light));
-			}
-			.section h2 {
-				font-size: 1.75rem;
-				margin-bottom: 0.75em;
-			}
-			.skills-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+			/* Divider */
+			.section-divider {
+				display: flex;
+				align-items: center;
 				gap: 1em;
+				margin: 3em 0 1.75em;
+			}
+			.section-divider::before,
+			.section-divider::after {
+				content: '';
+				flex: 1;
+				height: 1px;
+				background: rgb(var(--gray-light));
+			}
+			.section-divider span {
+				font-size: 0.8rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: rgb(var(--gray));
+				white-space: nowrap;
+			}
+
+			/* Skills */
+			.skills-grid {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6em;
 				list-style: none;
 				padding: 0;
 				margin: 0;
 			}
 			.skill-tag {
-				background: rgb(var(--gray-light));
-				border-radius: 6px;
-				padding: 0.5em 1em;
-				text-align: center;
-				font-size: 0.95rem;
+				background: rgb(var(--surface));
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 100px;
+				padding: 0.35em 1em;
+				font-size: 0.875rem;
+				color: rgb(var(--gray-dark));
+				font-weight: 600;
+				transition: background var(--transition), border-color var(--transition), color var(--transition);
 			}
-			.contact-links {
-				display: flex;
-				gap: 1em;
-				flex-wrap: wrap;
-				align-items: center;
-				margin-top: 0.5em;
-			}
-			.contact-links a {
-				display: flex;
-				align-items: center;
-				gap: 0.4em;
-				text-decoration: none;
+			.skill-tag:hover {
+				background: var(--accent-light);
+				border-color: rgba(29,78,216,0.3);
 				color: var(--accent);
 			}
-			.contact-links a:hover {
-				text-decoration: underline;
+
+			/* Feature cards */
+			.cards-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 1.25em;
+				margin-top: 1em;
+			}
+			.feature-card {
+				background: rgb(var(--white));
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: var(--radius);
+				padding: 1.5em;
+				text-decoration: none;
+				color: inherit;
+				display: flex;
+				flex-direction: column;
+				gap: 0.5em;
+				box-shadow: var(--box-shadow);
+				transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+			}
+			.feature-card:hover {
+				box-shadow: var(--box-shadow-hover);
+				transform: translateY(-3px);
+				border-color: rgba(29,78,216,0.25);
+				text-decoration: none;
+			}
+			.card-icon {
+				font-size: 1.75rem;
+				line-height: 1;
+			}
+			.card-title {
+				font-size: 1.05rem;
+				font-weight: 700;
+				color: rgb(var(--black));
+				margin: 0;
+			}
+			.card-desc {
+				font-size: 0.875rem;
+				color: rgb(var(--gray));
+				margin: 0;
+				line-height: 1.5;
+			}
+
+			/* Contact strip */
+			.contact-strip {
+				margin-top: 1.25em;
+				padding: 1.5em;
+				background: linear-gradient(135deg, var(--accent-light) 0%, rgba(219,234,254,0.5) 100%);
+				border: 1px solid rgba(29,78,216,0.15);
+				border-radius: var(--radius);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 1em;
+			}
+			.contact-strip p {
+				margin: 0;
+				font-weight: 600;
+				color: rgb(var(--black));
+			}
+			.contact-strip span {
+				display: block;
+				font-size: 0.875rem;
+				font-weight: 400;
+				color: rgb(var(--gray));
+				margin-top: 0.2em;
 			}
 		</style>
 	</head>
@@ -99,56 +181,72 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Header />
 		<main>
 			<section class="hero">
-				<h1>Hei, jeg er Mats Kjoshagen 👋</h1>
-				<p class="tagline">IT-utvikler med lidenskap for teknologi, kode og gode løsninger.</p>
-				<div class="hero-links">
-					<a href="/cv" class="btn btn-primary">Se min CV</a>
+				<div class="hero-badge">Tilgjengelig for nye muligheter</div>
+				<h1>Mats Kjoshagen</h1>
+				<p class="hero-tagline">
+					IT-utvikler med lidenskap for teknologi, kode og gode løsninger –
+					fra frontend til sky og alt i mellom.
+				</p>
+				<div class="hero-actions">
+					<a href="/cv" class="btn btn-primary">📄 Se min CV</a>
 					<a href="/about" class="btn btn-secondary">Om meg</a>
 				</div>
 			</section>
 
-			<section class="section">
-				<h2>Hva jeg jobber med</h2>
-				<p>
-					Jeg er en IT-utvikler med interesse for fullstack-utvikling, skyteknologi og
-					automatisering. Jeg liker å bygge robuste og brukervennlige løsninger, og er alltid
-					nysgjerrig på ny teknologi.
-				</p>
-				<ul class="skills-grid">
-					<li class="skill-tag">TypeScript / JavaScript</li>
-					<li class="skill-tag">Python</li>
-					<li class="skill-tag">React</li>
-					<li class="skill-tag">Node.js</li>
-					<li class="skill-tag">SQL / PostgreSQL</li>
-					<li class="skill-tag">Docker</li>
-					<li class="skill-tag">Linux</li>
-					<li class="skill-tag">Git</li>
-					<li class="skill-tag">Cloudflare</li>
-					<li class="skill-tag">Azure / AWS</li>
-				</ul>
-			</section>
+			<div class="section-divider"><span>Tekniske ferdigheter</span></div>
 
-			<section class="section">
-				<h2>Ta kontakt</h2>
-				<p>
-					Er du interessert i å ta kontakt, eller ønsker du å se mer? Du finner meg her:
-				</p>
-				<div class="contact-links">
-					<a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer">
-						<svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
-							<path
-								fill="currentColor"
-								d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							></path>
-						</svg>
-						github.com/matskkolstad
-					</a>
-					<a href="/cv">📄 Min CV</a>
-					<a href="/blog">✍️ Blogg</a>
+			<ul class="skills-grid">
+				<li class="skill-tag">TypeScript</li>
+				<li class="skill-tag">JavaScript</li>
+				<li class="skill-tag">Python</li>
+				<li class="skill-tag">React</li>
+				<li class="skill-tag">Node.js</li>
+				<li class="skill-tag">Astro</li>
+				<li class="skill-tag">SQL / PostgreSQL</li>
+				<li class="skill-tag">REST API</li>
+				<li class="skill-tag">Docker</li>
+				<li class="skill-tag">Linux</li>
+				<li class="skill-tag">Git</li>
+				<li class="skill-tag">Cloudflare</li>
+				<li class="skill-tag">Azure</li>
+				<li class="skill-tag">HTML / CSS</li>
+			</ul>
+
+			<div class="section-divider"><span>Utforsk</span></div>
+
+			<div class="cards-grid">
+				<a href="/cv" class="feature-card">
+					<div class="card-icon">📄</div>
+					<p class="card-title">Curriculum Vitae</p>
+					<p class="card-desc">Erfaring, utdanning og tekniske kvalifikasjoner samlet på ett sted.</p>
+				</a>
+				<a href="/about" class="feature-card">
+					<div class="card-icon">👤</div>
+					<p class="card-title">Om meg</p>
+					<p class="card-desc">Hvem er jeg, hva driver meg, og hva ser jeg etter?</p>
+				</a>
+				<a href="/blog" class="feature-card">
+					<div class="card-icon">✍️</div>
+					<p class="card-title">Blogg</p>
+					<p class="card-desc">Tanker, erfaringer og tekniske artikler om det jeg jobber med.</p>
+				</a>
+				<a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer" class="feature-card">
+					<div class="card-icon">🐙</div>
+					<p class="card-title">GitHub</p>
+					<p class="card-desc">Se mine open source-prosjekter og bidrag på GitHub.</p>
+				</a>
+			</div>
+
+			<div class="contact-strip">
+				<div>
+					<p>La oss ta en prat!</p>
+					<span>Jeg er alltid åpen for interessante samtaler og muligheter.</span>
 				</div>
-			</section>
+				<a href="mailto:mats@kjoshagen.online" class="btn btn-primary">Ta kontakt</a>
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+
 
