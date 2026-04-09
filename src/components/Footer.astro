@@ -1,76 +1,107 @@
 ---
-const today = new Date();
+const year = new Date().getFullYear();
 ---
 
 <footer>
-	<div class="meta">
-		<p class="name">Mats Kjøshagen</p>
-		<p>Utvikling, skyløsninger og drift · Oslo-området</p>
-		<p class="subtle">
-			{today.getFullYear()} · Ledige oppdrag vurderes · hei@kjoshagen.online
-		</p>
+	<div class="footer-inner">
+		<div class="footer-brand">
+			<span class="footer-name">Mats Kjoshagen</span>
+			<span class="footer-tagline">IT-utvikler · kjoshagen.online</span>
+		</div>
+		<nav class="footer-nav" aria-label="Footer-navigasjon">
+			<a href="/">Hjem</a>
+			<a href="/cv">CV</a>
+			<a href="/about">Om meg</a>
+			<a href="/blog">Blogg</a>
+		</nav>
+		<div class="footer-social">
+			<a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="22" height="22">
+					<path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+				</svg>
+			</a>
+			<a href="mailto:mats@kjoshagen.online" aria-label="E-post">
+				<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+					<polyline points="2,4 12,13 22,4"></polyline>
+				</svg>
+			</a>
+		</div>
 	</div>
-	<div class="social-links">
-		<a href="mailto:hei@kjoshagen.online">
-			<span class="sr-only">E-post</span>
-			<svg viewBox="0 0 24 24" aria-hidden="true" width="28" height="28">
-				<path
-					fill="currentColor"
-					d="M4 6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2H4zm0 2 8 5 8-5v2l-8 5-8-5V8z"
-				></path>
-			</svg>
-		</a>
-		<a href="https://www.linkedin.com/in/kjoshagen" target="_blank" rel="noreferrer">
-			<span class="sr-only">LinkedIn</span>
-			<svg viewBox="0 0 24 24" aria-hidden="true" width="28" height="28">
-				<path
-					fill="currentColor"
-					d="M20.452 20.452h-3.554v-5.57c0-1.328-.027-3.037-1.85-3.037-1.851 0-2.134 1.445-2.134 2.938v5.669H9.36V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.604 0 4.271 2.372 4.271 5.459v6.282zM5.337 7.433a2.065 2.065 0 1 1 .001-4.13 2.065 2.065 0 0 1-.001 4.13zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"
-				></path>
-			</svg>
-		</a>
-		<a href="https://github.com/matskkolstad" target="_blank" rel="noreferrer">
-			<span class="sr-only">GitHub</span>
-			<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
-				><path
-					fill="currentColor"
-					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				></path></svg
-			>
-		</a>
+	<div class="footer-copy">
+		&copy; {year} Mats Kjoshagen. Alle rettigheter forbeholdt.
 	</div>
 </footer>
+
 <style>
 	footer {
-		padding: 3em 1em 6em 1em;
-		background: linear-gradient(180deg, rgba(var(--gray-light), 0.65), #fdfdfd 65%);
-		color: rgb(var(--gray-dark));
-		text-align: center;
-		border-top: 1px solid rgba(var(--gray-light), 0.8);
+		background: rgb(var(--black));
+		color: rgb(var(--gray-light));
+		padding: 2.5em 1.5em 1.5em;
 	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.meta {
-		max-width: 540px;
+	.footer-inner {
+		max-width: 1000px;
 		margin: 0 auto;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 2em;
+		flex-wrap: wrap;
+		padding-bottom: 2em;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
 	}
-	.meta .name {
+	.footer-brand {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
+	}
+	.footer-name {
 		font-weight: 700;
-		font-size: 1.1em;
-		margin-bottom: 0.2em;
+		font-size: 1.1rem;
+		color: #fff;
 	}
-	.subtle {
+	.footer-tagline {
+		font-size: 0.85rem;
 		color: rgb(var(--gray));
 	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray-dark));
+	.footer-nav {
+		display: flex;
+		gap: 1.25em;
+		flex-wrap: wrap;
+		align-items: center;
 	}
-	.social-links a:hover {
-		color: rgb(var(--accent));
+	.footer-nav a {
+		color: rgb(var(--gray-light));
+		text-decoration: none;
+		font-size: 0.9rem;
+		transition: color var(--transition);
+	}
+	.footer-nav a:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+	.footer-social {
+		display: flex;
+		gap: 0.75em;
+		align-items: center;
+	}
+	.footer-social a {
+		display: flex;
+		align-items: center;
+		color: rgb(var(--gray));
+		text-decoration: none;
+		transition: color var(--transition);
+	}
+	.footer-social a:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+	.footer-copy {
+		max-width: 1000px;
+		margin: 1.25em auto 0;
+		font-size: 0.8rem;
+		color: rgb(var(--gray));
+		text-align: center;
 	}
 </style>
+

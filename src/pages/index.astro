@@ -8,438 +8,245 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <!doctype html>
 <html lang="no">
 	<head>
-		<BaseHead title={`${SITE_TITLE} | Personlig nettside`} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			.page {
-				display: flex;
-				flex-direction: column;
-				gap: 3rem;
-				padding-top: 1rem;
-			}
+			/* Hero */
 			.hero {
-				display: grid;
-				grid-template-columns: 1.1fr 0.9fr;
-				gap: 1.75rem;
-				align-items: center;
-				padding: 2.5rem 2rem;
-				margin: 1rem auto 0;
-				background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.08), #fff);
-				border: 1px solid rgba(var(--gray-light), 0.9);
-				box-shadow: var(--box-shadow);
-				border-radius: var(--card-radius);
+				padding: 5em 0 3.5em;
+				text-align: center;
+				position: relative;
 			}
-			.eyebrow {
-				text-transform: uppercase;
-				letter-spacing: 0.08em;
-				font-size: 0.75rem;
-				color: rgb(var(--gray));
-				margin: 0 0 0.5rem 0;
+			.hero::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29, 78, 216, 0.07) 0%, transparent 70%);
+				pointer-events: none;
+			}
+			.hero-badge {
+				display: inline-block;
+				background: var(--accent-light);
+				color: var(--accent);
+				border: 1px solid rgba(29,78,216,0.2);
+				border-radius: 100px;
+				font-size: 0.85rem;
 				font-weight: 700;
+				padding: 0.3em 1em;
+				margin-bottom: 1.25em;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
 			}
 			.hero h1 {
-				margin: 0 0 0.5rem 0;
+				font-size: clamp(2.25rem, 6vw, 3.5rem);
+				line-height: 1.1;
+				margin-bottom: 0.5em;
+				background: linear-gradient(135deg, rgb(var(--black)) 40%, var(--accent));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
 			}
-			.lede {
-				margin: 0 0 1.2rem 0;
-				color: rgb(var(--gray-dark));
-				font-size: 1.05em;
-				max-width: 42ch;
-			}
-			.actions {
-				display: flex;
-				gap: 0.8rem;
-				flex-wrap: wrap;
-				margin-bottom: 1.4rem;
-			}
-			.btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				gap: 0.4rem;
-				padding: 0.8rem 1.2rem;
-				border-radius: 999px;
-				text-decoration: none;
-				font-weight: 700;
-				border: 2px solid transparent;
-				transition: transform 150ms ease, box-shadow 200ms ease, border-color 150ms ease;
-			}
-			.btn.primary {
-				background: linear-gradient(120deg, #2563eb, #1e3a8a);
-				color: white;
-				box-shadow: 0 12px 32px rgba(var(--accent-rgb), 0.25);
-			}
-			.btn.secondary {
-				border-color: rgba(var(--gray), 0.35);
-				color: rgb(var(--black));
-				background: white;
-			}
-			.btn:hover {
-				transform: translateY(-1px);
-				box-shadow: 0 10px 26px rgba(var(--accent-rgb), 0.2);
-				border-color: rgba(var(--accent-rgb), 0.35);
-			}
-			.quickfacts {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-				gap: 0.8rem;
-			}
-			.fact {
-				padding: 0.9rem 1rem;
-				border: 1px solid rgba(var(--gray-light), 0.9);
-				border-radius: 12px;
-				background: white;
-				box-shadow: 0 4px 14px rgba(var(--gray), 0.12);
-			}
-			.fact small {
-				display: block;
+			.hero-tagline {
+				font-size: 1.15rem;
 				color: rgb(var(--gray));
-				font-weight: 600;
-				margin-bottom: 0.25rem;
+				max-width: 520px;
+				margin: 0 auto 2em;
+				line-height: 1.6;
+			}
+			.hero-actions {
+				display: flex;
+				gap: 1em;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+
+			/* Divider */
+			.section-divider {
+				display: flex;
+				align-items: center;
+				gap: 1em;
+				margin: 3em 0 1.75em;
+			}
+			.section-divider::before,
+			.section-divider::after {
+				content: '';
+				flex: 1;
+				height: 1px;
+				background: rgb(var(--gray-light));
+			}
+			.section-divider span {
+				font-size: 0.8rem;
+				font-weight: 700;
 				text-transform: uppercase;
-				letter-spacing: 0.04em;
+				letter-spacing: 0.08em;
+				color: rgb(var(--gray));
+				white-space: nowrap;
 			}
-			.fact strong {
-				font-size: 1.02rem;
-				color: rgb(var(--black));
+
+			/* Skills */
+			.skills-grid {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6em;
+				list-style: none;
+				padding: 0;
+				margin: 0;
 			}
-			.hero-card {
-				background: #0f172a;
-				color: #e2e8f0;
-				border-radius: var(--card-radius);
-				padding: 1.6rem;
-				border: 1px solid rgba(255, 255, 255, 0.08);
-				box-shadow: 0 16px 44px rgba(15, 23, 42, 0.32);
+			.skill-tag {
+				background: rgb(var(--surface));
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 100px;
+				padding: 0.35em 1em;
+				font-size: 0.875rem;
+				color: rgb(var(--gray-dark));
+				font-weight: 600;
+				transition: background var(--transition), border-color var(--transition), color var(--transition);
 			}
-			.hero-card h3 {
-				margin-top: 0;
-				color: #e2e8f0;
+			.skill-tag:hover {
+				background: var(--accent-light);
+				border-color: rgba(29,78,216,0.3);
+				color: var(--accent);
 			}
-			.hero-card ul {
-				padding-left: 1.2rem;
-				margin: 0.6rem 0 0 0;
-				color: #cbd5e1;
-			}
-			.section {
+
+			/* Feature cards */
+			.cards-grid {
 				display: grid;
-				gap: 1.6rem;
-				padding: 0 0.5rem;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 1.25em;
+				margin-top: 1em;
 			}
-			.section-header {
+			.feature-card {
+				background: rgb(var(--white));
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: var(--radius);
+				padding: 1.5em;
+				text-decoration: none;
+				color: inherit;
 				display: flex;
 				flex-direction: column;
-				gap: 0.4rem;
-				max-width: 720px;
+				gap: 0.5em;
+				box-shadow: var(--box-shadow);
+				transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 			}
-			.section-header h2 {
-				margin: 0;
+			.feature-card:hover {
+				box-shadow: var(--box-shadow-hover);
+				transform: translateY(-3px);
+				border-color: rgba(29,78,216,0.25);
+				text-decoration: none;
 			}
-			.card-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-				gap: 1.2rem;
+			.card-icon {
+				font-size: 1.75rem;
+				line-height: 1;
 			}
-			.card {
-				background: white;
-				border-radius: var(--card-radius);
-				padding: 1.2rem 1.4rem;
-				border: 1px solid rgba(var(--gray-light), 0.9);
-				box-shadow: 0 8px 26px rgba(var(--gray), 0.14);
-			}
-			.card h3 {
-				margin-top: 0;
-			}
-			.chips {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.5rem;
-			}
-			.chip {
-				padding: 0.4rem 0.7rem;
-				border-radius: 999px;
-				background: rgba(var(--accent-rgb), 0.08);
-				border: 1px solid rgba(var(--accent-rgb), 0.18);
-				color: rgb(var(--black));
-				font-weight: 600;
-				font-size: 0.95rem;
-			}
-			.timeline {
-				display: grid;
-				gap: 1rem;
-			}
-			.timeline-card {
-				border-left: 4px solid var(--accent);
-				padding-left: 1rem;
-			}
-			.timeline-card .period {
-				margin: 0;
-				color: rgb(var(--gray));
+			.card-title {
+				font-size: 1.05rem;
 				font-weight: 700;
-				letter-spacing: 0.04em;
-				text-transform: uppercase;
+				color: rgb(var(--black));
+				margin: 0;
 			}
-			.list {
-				padding-left: 1.1rem;
-				margin: 0.4rem 0 0.2rem 0;
+			.card-desc {
+				font-size: 0.875rem;
+				color: rgb(var(--gray));
+				margin: 0;
+				line-height: 1.5;
 			}
-			.grid-two {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 1.2rem;
-			}
-			.contact {
+
+			/* Contact strip */
+			.contact-strip {
+				margin-top: 1.25em;
+				padding: 1.5em;
+				background: linear-gradient(135deg, var(--accent-light) 0%, rgba(219,234,254,0.5) 100%);
+				border: 1px solid rgba(29,78,216,0.15);
+				border-radius: var(--radius);
 				display: flex;
-				flex-wrap: wrap;
-				gap: 0.8rem;
 				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 1em;
 			}
-			@media (max-width: 960px) {
-				.hero {
-					grid-template-columns: 1fr;
-					padding: 1.4rem;
-				}
-				.lede {
-					max-width: unset;
-				}
+			.contact-strip p {
+				margin: 0;
+				font-weight: 600;
+				color: rgb(var(--black));
+			}
+			.contact-strip span {
+				display: block;
+				font-size: 0.875rem;
+				font-weight: 400;
+				color: rgb(var(--gray));
+				margin-top: 0.2em;
 			}
 		</style>
 	</head>
 	<body id="top">
 		<Header />
-		<main class="page">
-			<section class="hero" id="hero">
+		<main>
+			<section class="hero">
+				<div class="hero-badge">Tilgjengelig for nye muligheter</div>
+				<h1>Mats Kjoshagen</h1>
+				<p class="hero-tagline">
+					IT-utvikler med lidenskap for teknologi, kode og gode løsninger –
+					fra frontend til sky og alt i mellom.
+				</p>
+				<div class="hero-actions">
+					<a href="/cv" class="btn btn-primary">📄 Se min CV</a>
+					<a href="/about" class="btn btn-secondary">Om meg</a>
+				</div>
+			</section>
+
+			<div class="section-divider"><span>Tekniske ferdigheter</span></div>
+
+			<ul class="skills-grid">
+				<li class="skill-tag">TypeScript</li>
+				<li class="skill-tag">JavaScript</li>
+				<li class="skill-tag">Python</li>
+				<li class="skill-tag">React</li>
+				<li class="skill-tag">Node.js</li>
+				<li class="skill-tag">Astro</li>
+				<li class="skill-tag">SQL / PostgreSQL</li>
+				<li class="skill-tag">REST API</li>
+				<li class="skill-tag">Docker</li>
+				<li class="skill-tag">Linux</li>
+				<li class="skill-tag">Git</li>
+				<li class="skill-tag">Cloudflare</li>
+				<li class="skill-tag">Azure</li>
+				<li class="skill-tag">HTML / CSS</li>
+			</ul>
+
+			<div class="section-divider"><span>Utforsk</span></div>
+
+			<div class="cards-grid">
+				<a href="/cv" class="feature-card">
+					<div class="card-icon">📄</div>
+					<p class="card-title">Curriculum Vitae</p>
+					<p class="card-desc">Erfaring, utdanning og tekniske kvalifikasjoner samlet på ett sted.</p>
+				</a>
+				<a href="/about" class="feature-card">
+					<div class="card-icon">👤</div>
+					<p class="card-title">Om meg</p>
+					<p class="card-desc">Hvem er jeg, hva driver meg, og hva ser jeg etter?</p>
+				</a>
+				<a href="/blog" class="feature-card">
+					<div class="card-icon">✍️</div>
+					<p class="card-title">Blogg</p>
+					<p class="card-desc">Tanker, erfaringer og tekniske artikler om det jeg jobber med.</p>
+				</a>
+				<a href="https://github.com/matskkolstad" target="_blank" rel="noopener noreferrer" class="feature-card">
+					<div class="card-icon">🐙</div>
+					<p class="card-title">GitHub</p>
+					<p class="card-desc">Se mine open source-prosjekter og bidrag på GitHub.</p>
+				</a>
+			</div>
+
+			<div class="contact-strip">
 				<div>
-					<p class="eyebrow">kjoshagen.online</p>
-					<h1>Hei, jeg er {SITE_TITLE}</h1>
-					<p class="lede">
-						Fullstack-utvikler med foten i drift og sky. Jeg bygger raske, driftssikre løsninger i
-						TypeScript og på Cloudflare-plattformen, med fokus på automatisering og enkle brukeropplevelser.
-					</p>
-					<div class="actions">
-						<a class="btn primary" href="mailto:hei@kjoshagen.online">Ta kontakt</a>
-						<a class="btn secondary" href="#cv">Se CV i kortform</a>
-					</div>
-					<div class="quickfacts">
-						<div class="fact">
-							<small>Rolle</small>
-							<strong>Utvikling & drift</strong>
-						</div>
-						<div class="fact">
-							<small>Basert i</small>
-							<strong>Oslo-området</strong>
-						</div>
-						<div class="fact">
-							<small>Fokus</small>
-							<strong>Edge, web, automatisering</strong>
-						</div>
-						<div class="fact">
-							<small>Tilgjengelighet</small>
-							<strong>Oppdrag & faste roller</strong>
-						</div>
-					</div>
+					<p>La oss ta en prat!</p>
+					<span>Jeg er alltid åpen for interessante samtaler og muligheter.</span>
 				</div>
-				<div class="hero-card">
-					<p class="eyebrow" style="color:#a5b4fc;">Akkurat nå</p>
-					<h3>Bygger slanke løsninger på Cloudflare</h3>
-					<ul>
-						<li>Migrerer nettsider til Astro + Cloudflare Pages for fart og sikkerhet.</li>
-						<li>Lager små edge-APIer med Workers, KV og D1.</li>
-						<li>Setter opp CI/CD i GitHub Actions med IaC og overvåkning.</li>
-						<li>Automatiserer manuelle rutiner i Node.js og PowerShell.</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="section" id="cv">
-				<div class="section-header">
-					<p class="eyebrow">CV i kortversjon</p>
-					<h2>Utvikler med driftsrefleks</h2>
-					<p>
-						Jeg trives der kode møter infrastruktur: raske leveranser, god loggføring og løsninger som er
-						enklere å drifte enn å forklare.
-					</p>
-				</div>
-				<div class="card-grid">
-					<article class="card">
-						<h3>Hva jeg gjør</h3>
-						<ul class="list">
-							<li>Designer og bygger APIer og web-apper i TypeScript/Astro.</li>
-							<li>Drifter og overvåker løsninger med Cloudflare Workers, KV, D1 og Pages.</li>
-							<li>Etablerer CI/CD, kvalitetssikrer og skriver dokumentasjon som brukes.</li>
-						</ul>
-					</article>
-					<article class="card">
-						<h3>Hvordan jeg jobber</h3>
-						<ul class="list">
-							<li>Leverer små iterasjoner med tydelige målinger.</li>
-							<li>Søker enkel arkitektur med så få bevegelige deler som mulig.</li>
-							<li>Prioriterer sikker default-konfigurasjon og automatiserte sjekker.</li>
-						</ul>
-					</article>
-					<article class="card">
-						<h3>Hva du får</h3>
-						<ul class="list">
-							<li>Enkle dashbord og logginnsikt for drift.</li>
-							<li>Kode og IaC som kan overtas av teamet ditt uten friksjon.</li>
-							<li>Proaktiv kommunikasjon på norsk og engelsk.</li>
-						</ul>
-					</article>
-				</div>
-			</section>
-
-			<section class="section" id="kompetanse">
-				<div class="section-header">
-					<p class="eyebrow">Kompetanse</p>
-					<h2>Teknologi og verktøy</h2>
-					<p>
-						Bygger for web, sky og automasjon. Favoritter er Astro for frontenden og Cloudflare for
-						edge/distribusjon, men jeg er pragmatisk på valg av verktøy.
-					</p>
-				</div>
-				<div class="grid-two">
-					<article class="card">
-						<h3>Kjerneområder</h3>
-						<ul class="list">
-							<li>TypeScript/Node.js, Astro og React for web og UI.</li>
-							<li>API-design (REST, webhooks), autentisering og tilgangsstyring.</li>
-							<li>Observability: logging, strukturert metrikk og varslingsrutiner.</li>
-							<li>DevOps/CI: GitHub Actions, IaC, automatisert kvalitet.</li>
-						</ul>
-					</article>
-					<article class="card">
-						<h3>Teknologistakk</h3>
-						<div class="chips">
-							<span class="chip">Astro</span>
-							<span class="chip">TypeScript</span>
-							<span class="chip">Node.js</span>
-							<span class="chip">Cloudflare Workers</span>
-							<span class="chip">Cloudflare Pages</span>
-							<span class="chip">KV / D1</span>
-							<span class="chip">Wrangler</span>
-							<span class="chip">GitHub Actions</span>
-							<span class="chip">Docker</span>
-							<span class="chip">PowerShell</span>
-							<span class="chip">Sass/CSS</span>
-						</div>
-					</article>
-				</div>
-			</section>
-
-			<section class="section" id="erfaring">
-				<div class="section-header">
-					<p class="eyebrow">Erfaring</p>
-					<h2>Roller og oppgaver</h2>
-					<p>Et utvalg av erfaringer som viser bredden fra utvikling til drift og rådgivning.</p>
-				</div>
-				<div class="timeline">
-					<article class="card timeline-card">
-						<p class="period">2024 – nå</p>
-						<h3>Utvikler & drift (selvstendig)</h3>
-						<p>Hjelper små og mellomstore team med å levere stabile løsninger raskt.</p>
-						<ul class="list">
-							<li>Bygger edge-APIer og små tjenester med Cloudflare Workers og Astro.</li>
-							<li>Flytter statiske sider til Cloudflare Pages for ytelse og enklere drift.</li>
-							<li>Etablerer CI/CD, logger og alarmer med GitHub Actions og wrangler.</li>
-						</ul>
-					</article>
-					<article class="card timeline-card">
-						<p class="period">2021 – 2024</p>
-						<h3>IT-konsulent / utvikler</h3>
-						<p>Leveranser fra support og drift til utvikling av interne verktøy.</p>
-						<ul class="list">
-							<li>Automatiserte manuelle rutiner i PowerShell og Node.js.</li>
-							<li>Implementerte overvåkning og loggstruktur for produksjonstjenester.</li>
-							<li>Bistod i migreringer til sky og forbedret deploy-prosesser.</li>
-						</ul>
-					</article>
-					<article class="card timeline-card">
-						<p class="period">2019 – 2021</p>
-						<h3>Studentprosjekter & deltidsroller</h3>
-						<p>Prosjekter innen web, API-utvikling og infrastruktur som en del av studier og deltidsjobber.</p>
-						<ul class="list">
-							<li>Design av små web-apper med fokus på tilgjengelighet og ytelse.</li>
-							<li>Hands-on med Linux, nettverk og grunnleggende systemdrift.</li>
-							<li>Samarbeid i tverrfaglige team med korte leveransefrister.</li>
-						</ul>
-					</article>
-				</div>
-			</section>
-
-			<section class="section" id="prosjekter">
-				<div class="section-header">
-					<p class="eyebrow">Prosjekter</p>
-					<h2>Utvalgte leveranser og initiativ</h2>
-					<p>
-						Noen smakebiter på hva jeg liker å bygge – fra nettsider til automasjon og observability.
-					</p>
-				</div>
-				<div class="card-grid">
-					<article class="card">
-						<h3>kjoshagen.online</h3>
-						<p>Personlig nettside og CV bygget i Astro, levert på Cloudflare Pages og med edge-funksjoner.</p>
-						<ul class="list">
-							<li>Statisk generert innhold med raske edge-cache regler.</li>
-							<li>Tilpassede komponenter for CV, prosjekter og kontakt.</li>
-						</ul>
-					</article>
-					<article class="card">
-						<h3>Automatisering av drift</h3>
-						<p>Scripts og små APIer som fjerner manuelle driftsoppgaver.</p>
-						<ul class="list">
-							<li>PowerShell og Node for brukeroppsett og rapportering.</li>
-							<li>Helsetester som pinger kritiske tjenester og varsler.</li>
-						</ul>
-					</article>
-					<article class="card">
-						<h3>Observability light</h3>
-						<p>Strukturert logging og dashboards for små team uten tunge APM-verktøy.</p>
-						<ul class="list">
-							<li>JSON-logging, tracing-id og enkle varsler på feilrater.</li>
-							<li>CI-sjekker for ytelse og tilgjengelighet før produksjon.</li>
-						</ul>
-					</article>
-				</div>
-			</section>
-
-			<section class="section" id="utdanning">
-				<div class="section-header">
-					<p class="eyebrow">Utdanning</p>
-					<h2>Bakgrunn</h2>
-					<p>Formell bakgrunn i IT, supplert med kurs og mye praktisk erfaring.</p>
-				</div>
-				<div class="grid-two">
-					<article class="card">
-						<h3>Bachelor i IT</h3>
-						<p>Fokus på programmering, databaser, nettverk og systemdrift.</p>
-						<p class="subtle">Prosjekter innen web, APIer, sikkerhet og automatisering.</p>
-					</article>
-					<article class="card">
-						<h3>Kurs & sertifiseringer</h3>
-						<ul class="list">
-							<li>Sky og edge: Cloudflare Workers/Pages, IaC med Wrangler.</li>
-							<li>Sikkerhet og personvern: gode default-oppsett og logging.</li>
-							<li>CI/CD og DevOps-praksis for små team.</li>
-						</ul>
-					</article>
-				</div>
-			</section>
-
-			<section class="section" id="kontakt">
-				<div class="section-header">
-					<p class="eyebrow">Kontakt</p>
-					<h2>La oss prate</h2>
-					<p>Interessert i et prosjekt, en prat om drift eller en kaffekopp? Jeg svarer raskt.</p>
-				</div>
-				<div class="contact">
-					<a class="btn primary" href="mailto:hei@kjoshagen.online">Send e-post</a>
-					<a class="btn secondary" href="https://www.linkedin.com/in/kjoshagen" target="_blank" rel="noreferrer">
-						LinkedIn
-					</a>
-					<a class="btn secondary" href="https://github.com/matskkolstad" target="_blank" rel="noreferrer">
-						GitHub
-					</a>
-				</div>
-			</section>
+				<a href="mailto:mats@kjoshagen.online" class="btn btn-primary">Ta kontakt</a>
+			</div>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+
