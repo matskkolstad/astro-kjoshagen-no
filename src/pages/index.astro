@@ -6,45 +6,411 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="no">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero" id="top">
+				<div class="hero-content">
+					<p class="eyebrow">Cloudflare · TypeScript · Produkt</p>
+					<h1>Hei! Jeg er K. Joshagen.</h1>
+					<p class="lede">
+						Jeg bygger raske, driftssikre opplevelser på web og i skyen. Fokus ligger på enkle
+						løsninger som er lett å drifte, måle og forbedre sammen med teamet.
+					</p>
+					<div class="cta">
+						<a class="button primary" href="#cv">Se CV-oversikten</a>
+						<a class="button ghost" href="mailto:hello@kjoshagen.online">Book en prat</a>
+					</div>
+					<div class="hero-highlights">
+						<div class="highlight-card">
+							<p class="eyebrow">Edge & sky</p>
+							<h3>Cloudflare-first</h3>
+							<p>Workers, Pages, KV/R2 og caching-strategier som gir raske leveranser.</p>
+						</div>
+						<div class="highlight-card">
+							<p class="eyebrow">Frontend</p>
+							<h3>Astro + TypeScript</h3>
+							<p>Komponentdrevet utvikling, universell rendering og sømløs SEO.</p>
+						</div>
+						<div class="highlight-card">
+							<p class="eyebrow">Samarbeid</p>
+							<h3>Produktnær</h3>
+							<p>Arbeider tett med design og forretning for å bygge riktig før stort.</p>
+						</div>
+					</div>
+				</div>
+				<div class="hero-aside">
+					<div class="profile-card">
+						<p class="eyebrow">Snapshot</p>
+						<ul>
+							<li>Teknolog: TypeScript, Astro, Node.js</li>
+							<li>Plattform: Cloudflare Workers/Pages, KV & R2</li>
+							<li>Leveranse: GitHub, wrangler, CI/CD og observability</li>
+							<li>Base: Norge, tilgjengelig for hybride eller fjernprosjekter</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="panel">
+				<div class="section-header">
+					<p class="eyebrow">Om meg</p>
+					<h2>Produktnær utvikler med øye for drift</h2>
+					<p>
+						Jeg liker å stå mellom produkt, design og drift: bygge det riktige først, automatisere
+						der det sparer tid, og gjøre det enkelt å forstå hva som skjer i produksjon.
+					</p>
+				</div>
+				<div class="about-grid">
+					<div class="about-card">
+						<h3>Fokus</h3>
+						<ul>
+							<li>Edge-first løsninger som utnytter Cloudflare sitt økosystem.</li>
+							<li>Designsystem-tenkning slik at team kan bygge raskere over tid.</li>
+							<li>Strukturert innhold (MDX/Content Collections) for fleksible nettsider.</li>
+						</ul>
+					</div>
+					<div class="about-card">
+						<h3>Hvordan jeg jobber</h3>
+						<ul>
+							<li>Starter små, leverer ofte og lærer av brukerdata.</li>
+							<li>Skriver lesbar kode og dokumentasjon som team kan videreføre.</li>
+							<li>Setter opp automatiske bygg, tester og deploy før vi skalerer.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="cv" class="panel accent">
+				<div class="section-header">
+					<p class="eyebrow">CV</p>
+					<h2>Kort CV-oversikt</h2>
+					<p>
+						Her er hovedområdene jeg leverer på. Full prosjektliste og referanser deles gjerne i et
+						møte.
+					</p>
+				</div>
+				<div class="cv-grid">
+					<div class="cv-card">
+						<p class="eyebrow">Sky & plattform</p>
+						<h3>Cloudflare & Node</h3>
+						<ul>
+							<li>Designer API-er og automasjon på Workers og Pages.</li>
+							<li>Bygger state med KV/R2, køer og cache-strategier.</li>
+							<li>Automatiserer deploy med wrangler og GitHub Actions.</li>
+						</ul>
+					</div>
+					<div class="cv-card">
+						<p class="eyebrow">Frontend</p>
+						<h3>Astro og komponenter</h3>
+						<ul>
+							<li>Komponentbibliotek i Astro/TypeScript for raske sider.</li>
+							<li>Tilgjengelighet og ytelse som standard, ikke som ettertanke.</li>
+							<li>Content Collections og MDX for fleksibel redigering.</li>
+						</ul>
+					</div>
+					<div class="cv-card">
+						<p class="eyebrow">Samarbeid</p>
+						<h3>Produkt og mennesker</h3>
+						<ul>
+							<li>Oversetter krav til smidige leveranser og klare backlogger.</li>
+							<li>Fasiliterer arbeidsmøter og tekniske beslutninger.</li>
+							<li>Leverer dokumentasjon og opplæring som blir brukt.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="skills" class="panel">
+				<div class="section-header">
+					<p class="eyebrow">Kompetanse</p>
+					<h2>Teknisk verktøykasse</h2>
+					<p>
+						En blanding av teknologi og metode som gjør det mulig å bygge, teste og drifte uten
+						unødvendig friksjon.
+					</p>
+				</div>
+				<div class="skills-grid">
+					<div class="skill-card">
+						<h3>Teknologi</h3>
+						<ul>
+							<li>TypeScript, Node.js, Astro</li>
+							<li>Cloudflare Workers, Pages, KV & R2</li>
+							<li>Static & server rendering, edge routing</li>
+						</ul>
+					</div>
+					<div class="skill-card">
+						<h3>Metode</h3>
+						<ul>
+							<li>Lean eksperimenter og hypotesedrevet utvikling.</li>
+							<li>Designsystemer, komponentbibliotek og dokumentasjon.</li>
+							<li>Teknisk skriving for onboarding og håndbok.</li>
+						</ul>
+					</div>
+					<div class="skill-card">
+						<h3>Kvalitet</h3>
+						<ul>
+							<li>Automatiserte bygg, pre-commit-sjekker og predeploy-test.</li>
+							<li>Observability med strukturert logging og dashboards.</li>
+							<li>Sikkerhet med minste privilegium og hemmelighetshåndtering.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="projects" class="panel">
+				<div class="section-header">
+					<p class="eyebrow">Prosjekter</p>
+					<h2>Eksempler på hva jeg bygger</h2>
+					<p>Små leveranser som gjør en forskjell raskt.</p>
+				</div>
+				<div class="projects-grid">
+					<div class="project-card">
+						<h3>Kjoshagen.online</h3>
+						<p>
+							Personlig nettside bygget med Astro og Cloudflare, optimalisert for ytelse, SEO og
+							enkel redigering.
+						</p>
+						<ul>
+							<li>Astro + Content Collections for strukturert innhold.</li>
+							<li>Edge-hosting på Cloudflare for rask respons globalt.</li>
+						</ul>
+					</div>
+					<div class="project-card">
+						<h3>Edge API-lag</h3>
+						<p>
+							Lette API-er og proxylag på Workers som kobler SaaS-tjenester og beskytter
+							privatnøkler.
+						</p>
+						<ul>
+							<li>Rate limiting, caching og innsikt med strukturert logging.</li>
+							<li>Skreddersydde webhooks og køer for robuste integrasjoner.</li>
+						</ul>
+					</div>
+					<div class="project-card">
+						<h3>Automatisert leveranse</h3>
+						<p>
+							CI/CD-oppsett med GitHub Actions og wrangler som gjør det trygt å levere ofte.
+						</p>
+						<ul>
+							<li>Bygg, test og deploy i ett løp med klare verifiseringer.</li>
+							<li>Miljøkonfigurasjon og secrets håndtert trygt.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" class="panel contact">
+				<div class="section-header">
+					<p class="eyebrow">Kontakt</p>
+					<h2>La oss ta en prat</h2>
+					<p>Send en melding så deler jeg full CV, referanser og forslag til første steg.</p>
+				</div>
+				<div class="contact-grid">
+					<div class="contact-card">
+						<h3>E-post</h3>
+						<p>hello@kjoshagen.online</p>
+						<a class="button primary" href="mailto:hello@kjoshagen.online">Send e-post</a>
+					</div>
+					<div class="contact-card">
+						<h3>GitHub</h3>
+						<p>Følg koden og eksperimenter jeg deler.</p>
+						<a class="button ghost" href="https://github.com/matskkolstad" target="_blank" rel="noreferrer"
+							>Åpne GitHub</a
+						>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: 1.5em;
+		align-items: start;
+		padding: 3em 2em;
+		background: #ffffff;
+		border-radius: 18px;
+		box-shadow: var(--box-shadow);
+	}
+	.hero-content h1 {
+		margin-top: 0.2em;
+		margin-bottom: 0.3em;
+	}
+	.hero-content .lede {
+		font-size: 1.1em;
+		color: rgb(var(--gray));
+		max-width: 36rem;
+	}
+	.hero-highlights {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1em;
+		margin-top: 1.5em;
+	}
+	.highlight-card {
+		padding: 1em;
+		border: 1px solid rgba(var(--gray-light), 80%);
+		border-radius: 14px;
+		background: linear-gradient(180deg, rgba(var(--gray-light), 40%), #fff);
+		box-shadow: 0 10px 30px rgba(var(--gray), 12%);
+	}
+	.hero-aside {
+		display: flex;
+		justify-content: center;
+	}
+	.profile-card {
+		width: 100%;
+		max-width: 320px;
+		padding: 1.5em;
+		border-radius: 16px;
+		background: linear-gradient(180deg, #0ea5a510 0%, #ffffff 80%);
+		border: 1px solid rgba(var(--accent), 35%);
+		box-shadow: 0 12px 32px rgba(14, 165, 165, 0.15);
+	}
+	.profile-card ul {
+		padding-left: 1.1em;
+		margin: 0;
+		display: grid;
+		gap: 0.5em;
+		color: rgb(var(--gray));
+	}
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.75em;
+		color: rgb(var(--gray));
+		margin: 0 0 0.5em 0;
+	}
+	.cta {
+		display: flex;
+		gap: 0.75em;
+		flex-wrap: wrap;
+		margin-top: 1em;
+	}
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35em;
+		padding: 0.75em 1.1em;
+		border-radius: 12px;
+		text-decoration: none;
+		font-weight: 700;
+		border: 1px solid transparent;
+		transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, color 0.2s ease;
+	}
+	.button.primary {
+		background: linear-gradient(120deg, #0ea5a5, #0b6b6b);
+		color: #ffffff;
+		box-shadow: 0 10px 20px rgba(14, 165, 165, 0.25);
+	}
+	.button.primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 14px 26px rgba(14, 165, 165, 0.3);
+	}
+	.button.ghost {
+		border-color: rgba(var(--gray), 35%);
+		color: rgb(var(--gray-dark));
+		background: rgba(255, 255, 255, 0.8);
+	}
+	.button.ghost:hover {
+		border-color: rgba(var(--accent), 50%);
+		color: rgb(var(--accent-dark));
+		transform: translateY(-2px);
+	}
+	.panel {
+		margin-top: 2.5em;
+		padding: 2.5em 2em;
+		background: #ffffff;
+		border-radius: 18px;
+		border: 1px solid rgba(var(--gray-light), 70%);
+		box-shadow: var(--box-shadow);
+	}
+	.panel.accent {
+		background: linear-gradient(180deg, #f2fbfb 0%, #ffffff 80%);
+		border-color: rgba(var(--accent), 35%);
+	}
+	.section-header h2 {
+		margin-top: 0;
+		margin-bottom: 0.3em;
+	}
+	.section-header p {
+		max-width: 840px;
+		color: rgb(var(--gray));
+	}
+	.about-grid,
+	.cv-grid,
+	.skills-grid,
+	.projects-grid,
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1em;
+		margin-top: 1.2em;
+	}
+	.about-card,
+	.cv-card,
+	.skill-card,
+	.project-card,
+	.contact-card {
+		padding: 1.25em 1.4em;
+		border-radius: 14px;
+		border: 1px solid rgba(var(--gray-light), 80%);
+		background: #ffffff;
+		box-shadow: 0 10px 26px rgba(var(--gray), 12%);
+	}
+	.cv-card,
+	.project-card {
+		background: linear-gradient(180deg, #ffffff 0%, rgba(var(--gray-light), 40%) 100%);
+	}
+	.about-card ul,
+	.cv-card ul,
+	.skill-card ul,
+	.project-card ul {
+		margin: 0.5em 0 0 1em;
+		display: grid;
+		gap: 0.35em;
+		color: rgb(var(--gray));
+	}
+	.skills-grid {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	}
+	.projects-grid {
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	}
+	.contact {
+		background: linear-gradient(180deg, #f8faff 0%, #ffffff 80%);
+	}
+	.contact-card h3 {
+		margin-top: 0;
+	}
+	.contact-card p {
+		color: rgb(var(--gray));
+	}
+	.contact-grid {
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	}
+	@media (max-width: 960px) {
+		.hero {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 720px) {
+		.hero,
+		.panel {
+			padding: 1.5em 1.25em;
+		}
+		.hero-highlights {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
