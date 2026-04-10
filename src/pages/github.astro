@@ -23,24 +23,48 @@ interface GitHubRepo {
 let repos: GitHubRepo[] = [];
 let fetchError = false;
 
-try {
-	const response = await fetch(
-		'https://api.github.com/users/matskkolstad/repos?sort=updated&per_page=100&type=public',
-		{
-			headers: {
-				'Accept': 'application/vnd.github+json',
-				'X-GitHub-Api-Version': '2022-11-28',
-				'User-Agent': 'kjoshagen.no',
-			},
+async function fetchAllPublicRepos(username: string): Promise<GitHubRepo[]> {
+	const perPage = 100;
+	const maxPages = 200;
+	let page = 1;
+	const allRepos: GitHubRepo[] = [];
+
+	while (page <= maxPages) {
+		const response = await fetch(
+			`https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}&type=public&page=${page}`,
+			{
+				headers: {
+					'Accept': 'application/vnd.github+json',
+					'X-GitHub-Api-Version': '2022-11-28',
+					'User-Agent': 'kjoshagen.no',
+				},
+			}
+		);
+
+		if (!response.ok) {
+			throw new Error(`GitHub API request failed for user "${username}" on page ${page} with status ${response.status}`);
 		}
-	);
-	if (response.ok) {
-		const data: GitHubRepo[] = await response.json();
-		repos = data.filter((r) => !r.fork && !r.archived);
-	} else {
-		fetchError = true;
+
+		const pageRepos: GitHubRepo[] = await response.json();
+		allRepos.push(...pageRepos);
+		const linkHeader = response.headers.get('link') ?? '';
+		const hasNextPage = linkHeader.includes('rel="next"');
+
+		if (!hasNextPage) {
+			return allRepos;
+		}
+
+		page += 1;
 	}
-} catch {
+
+	throw new Error(`GitHub API pagination exceeded ${maxPages} pages for user "${username}" after fetching ${allRepos.length} repositories`);
+}
+
+try {
+	const data = await fetchAllPublicRepos('matskkolstad');
+	repos = data.filter((r) => !r.fork && !r.archived);
+} catch (error) {
+	console.error('Failed to fetch GitHub repositories:', error);
 	fetchError = true;
 }
 
