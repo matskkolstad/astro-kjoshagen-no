@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 
+export const prerender = false;
+
 interface GitHubRepo {
 	id: number;
 	name: string;
@@ -22,6 +24,8 @@ interface GitHubRepo {
 
 let repos: GitHubRepo[] = [];
 let fetchError = false;
+
+Astro.response.headers.set('Cache-Control', 'public, max-age=0, s-maxage=600, stale-while-revalidate=60');
 
 async function fetchAllPublicRepos(username: string): Promise<GitHubRepo[]> {
 	const perPage = 100;
