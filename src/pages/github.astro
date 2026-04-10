@@ -47,15 +47,17 @@ async function fetchAllPublicRepos(username: string): Promise<GitHubRepo[]> {
 
 		const pageRepos: GitHubRepo[] = await response.json();
 		allRepos.push(...pageRepos);
+		const linkHeader = response.headers.get('link') ?? '';
+		const hasNextPage = linkHeader.includes('rel="next"');
 
-		if (pageRepos.length < perPage) {
+		if (!hasNextPage || pageRepos.length < perPage) {
 			return allRepos;
 		}
 
 		page += 1;
 	}
 
-	throw new Error(`GitHub API pagination exceeded ${maxPages} pages for user "${username}"`);
+	throw new Error(`GitHub API pagination exceeded ${maxPages} pages for user "${username}" after fetching ${allRepos.length} repositories`);
 }
 
 try {
