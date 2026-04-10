@@ -49,7 +49,7 @@ async function fetchAllPublicRepos(username: string): Promise<GitHubRepo[]> {
 		allRepos.push(...pageRepos);
 
 		if (pageRepos.length < perPage) {
-			break;
+			return allRepos;
 		}
 
 		page += 1;
