@@ -25,10 +25,11 @@ let fetchError = false;
 
 async function fetchAllPublicRepos(username: string): Promise<GitHubRepo[]> {
 	const perPage = 100;
+	const maxPages = 200;
 	let page = 1;
 	const allRepos: GitHubRepo[] = [];
 
-	while (true) {
+	while (page <= maxPages) {
 		const response = await fetch(
 			`https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}&type=public&page=${page}`,
 			{
@@ -49,12 +50,14 @@ async function fetchAllPublicRepos(username: string): Promise<GitHubRepo[]> {
 		const linkHeader = response.headers.get('link') ?? '';
 		const hasNextPage = linkHeader.includes('rel="next"');
 
-		if (!hasNextPage || pageRepos.length < perPage) {
+		if (!hasNextPage) {
 			return allRepos;
 		}
 
 		page += 1;
 	}
+
+	throw new Error(`GitHub API pagination exceeded ${maxPages} pages for user "${username}" after fetching ${allRepos.length} repositories`);
 }
 
 try {
